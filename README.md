@@ -1,2 +1,2 @@
 # miscellaneous-python-codes
-This repo contains short and useful python codes.
+Short and useful python codes.
