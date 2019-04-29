@@ -92,7 +92,7 @@ def conn_aws_s3(aws_access_key, aws_secret_key, aws_bucket):
         print "The error is {} : {}".format(exn.__class__.__name__, exn)
 
 
-def conn_aws_arnrole_s3(aws_arn_role, aws_arn_session_name, aws_arn_session_duration, aws_bucket):
+def conn_aws_arnrole_s3(aws_access_key, aws_access_secret, aws_arn_role, aws_arn_session_name, aws_arn_session_duration, aws_bucket):
     """
 
     Makes connection to AWS S3 bucket with arn details. The connection details comes from extract_postgres.getawsarn(id)
@@ -112,7 +112,7 @@ def conn_aws_arnrole_s3(aws_arn_role, aws_arn_session_name, aws_arn_session_dura
 
     """
     try:
-        sts_connection = STSConnection()
+        sts_connection = STSConnection(aws_access_key, aws_access_secret)
         tempCredentials = sts_connection.assume_role(role_arn=aws_arn_role,
                                                      role_session_name=aws_arn_session_name,
                                                      duration_seconds=aws_arn_session_duration)
