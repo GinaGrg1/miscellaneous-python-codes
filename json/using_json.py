@@ -31,3 +31,7 @@ with open('./data/taxi.jl') as fp:
 
 avg_duration = sum(durations, timedelta()) / len(durations)
 print(f'average ride duration: {avg_duration}')
+
+
+# object_pairs_hook converts the dict into a list of tuples
+# {"var1": val1, "var2": val2}  --> [('var1', val1), ('var2', val2)]
