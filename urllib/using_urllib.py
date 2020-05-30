@@ -27,3 +27,6 @@ with ThreadPoolExecutor() as pool:
         fut.result()
 
 # Downloads two new files: 
+# 'GeoLite2-Country-CSV.zip' & 'NASA_access_log_Aug95.gz'
+
+
