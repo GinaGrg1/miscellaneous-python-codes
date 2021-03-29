@@ -11,6 +11,7 @@ my_func(1, 2, 3, 4, 5, k1=10, k3= 'happy', k4='go lucky')
 ismethod(obj), isfunction(obj), isroutine(obj), 
 getcomments(my_func) --> only shows comments immediately preceeding the func. --> will show # TODO: This is a comment.
 inspect.signature(my_func) --> inspect.signature(my_func).parameters.values()
+inspect.signature(my_func).return_annotation  --> shows what is returned.
 
 inspect.getsource(my_func)
 
