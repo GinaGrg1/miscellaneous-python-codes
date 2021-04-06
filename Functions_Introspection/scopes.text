@@ -1,0 +1,2 @@
+Whenever Python is told that a variable if nonlocal, it will look for it in the enclosing local scopes chain until it first encounters the specified variable name.
+Beware: It will only look in local scopes, it will not look in the global scope.
