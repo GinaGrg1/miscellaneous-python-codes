@@ -104,16 +104,46 @@ t2()
 ######################################################################################
 
 def counter(initial_value=0):
-  def inc(increment=1):
+  def inc(increment=1):  # inc is a closure.
     nonlocal initial_value  # if this is not done, it will error out.
     initial_value += increment
     return initial_value
   return inc
 
-c1 = counter()
+c1 = counter()  # c1.__closure__ --> (<cell at 0x7efe1c33c590: int object at 0xaa6780>,)
 c2 = counter(5)
 
 c1()  # gives 1
 c2(5) # gives 10.
 
 ######################################################################################
+
+def counter(fn, counters):
+  count = 0
+  def inner(*args, **kwargs):  # inner is a closure
+    nonlocal count
+    count += 1
+    print("{0} has been called {1} times".format(fn.__name__, count))
+    counters[fn.__name__] = count
+    return fn(*args, **kwargs)
+  return inner
+
+def add(a, b):
+  return a + b
+
+def mult(a, b):
+  return a * b
+
+c = dict()
+counter_add = counter(add, c)
+counter_mult = counter(mult, c)
+
+counter_add(20, 20)
+counter_add(40, 40)
+counter_mult(5, 5)
+
+c
+# {'add': 2, 'mult': 1}
+
+
+
